@@ -1,1 +1,34 @@
+# macOS systemfiler
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Ikoner
+Icon
+
+# Thumbnails
+._*
+
+# Node.js / JavaScript projekt
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+.cache/
+
+# Environment filer
+.env
+.env.local
+.env.*.local
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# Logs
+logs
+*.log
+*.log.*
