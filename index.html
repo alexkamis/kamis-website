@@ -1,67 +1,44 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Om mig — Kamis Works</title>
-  <meta name="description" content="Om Alex på Kamis Works – rådgivning och AI." />
+  <meta charset="UTF-8">
+  <title>Kamis Works</title>
   <style>
-    :root{ --bg:#fff; --fg:#0d1b2a; --muted:#6b7280; --line:#e5e7eb; }
-    *{ box-sizing:border-box }
-    html,body{ height:100% }
-    body{
-      margin:0; background:var(--bg); color:var(--fg);
-      font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial,sans-serif;
+    body {
+      background-color: #111; /* byt till #fff för vit bakgrund */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
     }
-    .wrap{ max-width:1100px; margin:0 auto; padding:24px }
-    header{
-      display:flex; justify-content:space-between; align-items:center; gap:12px; padding:8px 0 18px;
+    .logo {
+      font-family: "Times New Roman", "Noto Sans Cuneiform", "Segoe UI Historic", serif;
+      font-size: clamp(2rem, 8vw, 6rem); 
+      color: #fff; /* byt till #000 för svart text */
+      letter-spacing: 0.1em;
+      text-align: center;
     }
-    .logo{ font-weight:700; letter-spacing:.04em }
-    a{ color:inherit; text-decoration:none }
-    .back{
-      font-size:14px; padding:8px 12px; border:1px solid var(--line); border-radius:10px;
+    .link {
+      margin-top: 24px;
+      font-size: 14px;
     }
-    .grid{
-      display:grid; gap:24px; grid-template-columns: 1.1fr 1fr; align-items:center;
-      border:1px solid var(--line); border-radius:16px; padding:22px; background:#fff;
-      box-shadow:0 18px 50px rgba(0,0,0,.04);
+    .link a {
+      color: #aaa; /* ljusgrå för subtil stil */
+      text-decoration: none;
+      border-bottom: 1px solid #aaa;
+      padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
     }
-    @media (max-width:900px){ .grid{ grid-template-columns:1fr; padding:14px } }
-    figure{ margin:0; border-radius:14px; overflow:hidden; border:1px solid var(--line) }
-    img{ width:100%; height:100%; display:block; object-fit:cover }
-    h1{ margin:0 0 10px; font-size:clamp(28px,5vw,42px); line-height:1.1 }
-    .lead{ color:var(--muted); margin:0 0 8px }
-    .prose{ font-size:18px; }
-    footer{ margin:26px 0 4px; color:var(--muted); font-size:14px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap }
+    .link a:hover {
+      color: #fff;
+      border-color: #fff;
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="logo">KAMIS.WORKS</div>
-      <a class="back" href="/">Tillbaka</a>
-    </header>
-
-    <main class="grid" style="min-height:56vh">
-      <figure>
-        <img src="images/robotbarndom.jpg" alt="Jag som barn med en robotleksak">
-      </figure>
-      <section>
-        <h1>Om mig</h1>
-        <p class="lead">Rådgivning &amp; AI</p>
-        <div class="prose">
-          <p>Jag har alltid älskat robotar. När andra såg en leksak, såg jag framtiden. Nu lever vi i en tid där jag faktiskt kan jobba med dem, och det gör jag varje dag.</p>
-          <p>I mitt företag Kamis Works hjälper jag entreprenörer utvecklas och att ta in AI som en del av sin resa, så att de får uppleva samma sak som jag. En känsla av att världen plötsligt öppnar sig för nya möjligheter.</p>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <span>© <span id="y"></span> Kamis Works</span>
-      <span><a href="mailto:alex@kamis.works">alex@kamis.works</a></span>
-    </footer>
-  </div>
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <div class="logo">KAMIS W𒀭RKS</div>
+  <div class="link"><a href="about.html">Om mig</a></div>
 </body>
 </html>
