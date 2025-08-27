@@ -1,0 +1,2 @@
+http://*  https://kamis.works 301!
+https://www.kamis.works/*  https://kamis.works/:splat 301!
