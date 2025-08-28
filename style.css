@@ -179,3 +179,16 @@ p{ margin: 0 0 14px 0; color: var(--fg); }
   background: #fafafa;
   min-width: 200px;
 }
+
+.chat-box-full{
+  margin-top: 40px;
+  width: 100%;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 40px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: lowercase;
+  color: #555;
+}
