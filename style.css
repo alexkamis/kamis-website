@@ -53,25 +53,42 @@ main { flex: 1; }
   letter-spacing: -0.01em; /* fix: little tighter */
 }
 
-/* Final text-only logotype (normal spacing) */
+/* Final text-only logotype (med mjuk in/ut-övergång) */
 .brand--final{
   font: 700 15px/1 "Inter", sans-serif;
-  letter-spacing: 0;               /* normal tracking */
+  letter-spacing: 0;
   text-transform: lowercase;
   text-decoration: none;
   color: var(--fg);
+
+  /* långsammare ut (mouseleave) */
+  transition: color .60s ease-out;
 }
 
-/* Hover: gör allt grått ... */
+/* de två bokstäver som ska stanna svarta */
+.brand--final .keep{
+  transition: color .60s ease-out; /* samma långsammare ut */
+}
+
+/* IN: snabbare till grått när man hovrar */
 .brand--final:hover{
   color: #999;
+  transition: color .22s ease-in;   /* snabb in */
 }
 
-/* ...utom a och i som ska stanna svarta */
+/* IN: a och i stannar svarta (snabb in) */
 .brand--final:hover .keep{
   color: var(--fg);
+  transition: color .22s ease-in;
 }
 
+/* respekt för reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .brand--final, .brand--final .keep,
+  .brand--final:hover, .brand--final:hover .keep{
+    transition: none;
+  }
+}
 /* Navigation */
 .nav a {
   font: 600 15px/1 "Inter", sans-serif;
