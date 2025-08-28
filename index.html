@@ -1,53 +1,51 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Kamis Works</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Ladda Noto Sans Cuneiform för specialtecknet -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Cuneiform&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #111; /* byt till #fff för vit bakgrund */
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      margin: 0;
+      background-color: #fff;
+      color: #111;
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+    header a {
+      color: #111;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    main {
+      flex: 1;
+      display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Inter, Arial, sans-serif;
-    }
-    .logo {
-      font-size: clamp(2rem, 8vw, 6rem);
-      color: #fff;
-      letter-spacing: 0.15em;
       text-align: center;
-      font-weight: 600;
-    }
-    /* Gör så att just cuneiform-tecknet använder fallback-fonten */
-    .cuneiform {
-      font-family: "Noto Sans Cuneiform", "Segoe UI Historic", serif;
-      font-weight: normal;
-    }
-    .link {
-      margin-top: 28px;
-      font-size: 15px;
-    }
-    .link a {
-      color: #aaa;
-      text-decoration: none;
-      border-bottom: 1px solid #aaa;
-      padding-bottom: 2px;
-      transition: color .2s, border-color .2s;
-    }
-    .link a:hover {
-      color: #fff;
-      border-color: #fff;
+      padding: 20px;
+      line-height: 1.5;
     }
   </style>
 </head>
 <body>
-  <div class="logo">KAMIS W<span class="cuneiform">𒀭</span>RKS</div>
-  <div class="link"><a href="about.html">Enter</a></div>
+  <header>
+    <a href="index.html"><strong>KAMIS W𒀭RKS</strong></a>
+    <a href="about.html">About</a>
+  </header>
+  <main>
+    <p>
+      At Kamis Works we help entrepreneurs grow by integrating AI into their journey.  
+      We believe in unlocking possibilities—turning ideas into impact without the fluff.
+    </p>
+  </main>
 </body>
 </html>
