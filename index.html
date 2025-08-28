@@ -2,59 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>KAMIS works</title>
+  <title>KAMIS WORKS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#fff; --fg:#111; --muted:#5b5f66; --pad:24px; --max:1100px;
-      --body: 17px/1.6 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      --display: "Manrope", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-    *{ box-sizing:border-box }
-    html,body{ height:100% }
-    body{
-      margin:0; background:var(--bg); color:var(--fg);
-      font: var(--body);
-      display:flex; flex-direction:column; min-height:100vh;
-    }
-    header{
-      display:flex; justify-content:space-between; align-items:center;
-      gap:16px; padding:var(--pad); max-width:var(--max); margin:0 auto; width:100%;
-    }
-    .brand{
-      font-family:var(--display); font-weight:800; letter-spacing:.02em;
-      text-decoration:none; color:inherit; font-size:18px;
-    }
-    nav a{ text-decoration:none; color:inherit; font-weight:500 }
-    main{
-      flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
-      text-align:center; padding:clamp(16px,4vw,40px);
-    }
-    .hero{
-      font-family:var(--display); font-weight:800; letter-spacing:-0.01em;
-      font-size:clamp(2rem,5vw,3rem); margin:0 0 1rem;
-    }
-    .lead{
-      max-width:720px; color:var(--fg);
-      font: var(--body);
-      letter-spacing:.01em;
-    }
-  </style>
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <a class="brand" href="/index.html">KAMIS works</a>
+    <a class="brand" href="/index.html">KAMIS WORKS</a>
     <nav><a href="/about.html">About</a></nav>
   </header>
 
   <main>
-    <h1 class="hero">AI that works for entrepreneurs</h1>
-    <p class="lead">
-      We help entrepreneurs make meaningful progress with AI—practical, measurable, and focused.
-      Strategy, workshops, and hands-on implementation without the fluff.
-    </p>
+    <div class="container">
+      <h1 class="hero">AI that works for entrepreneurs</h1>
+      <p>
+        At <strong>Kamis works</strong>, we help companies move beyond the buzz and turn AI into
+        real impact. With a focus on clarity, simplicity, and measurable results, we guide
+        entrepreneurs through workshops, strategy, and implementation — no fluff, just progress.
+      </p>
+    </div>
   </main>
 </body>
 </html>
