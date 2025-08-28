@@ -124,6 +124,7 @@ p { margin: 0 0 18px 0; }
   color: #666;
   border-top: 1px solid #eee;
   text-align: center;
+  text-transform: lowercase;
 }
 
 /* Hover underline (nav, links, footer) */
