@@ -184,7 +184,7 @@ p { margin: 0 0 18px 0; }
 .header {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 1rem 1rem;   /* lite mer luft än 0.8rem */
+  padding: 1.2rem 1rem;   /* lite mer luft än 0.8rem */
   display: flex;
   justify-content: space-between;
   align-items: center;
