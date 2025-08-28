@@ -1,4 +1,4 @@
-:root{
+:root {
   --fg: #303133;
   --bg: #ffffff;
   --border: #ddd;
@@ -6,10 +6,10 @@
   --pad: 28px;
 }
 
-*{ box-sizing:border-box; }
-html, body{ height:100%; }
-body{
-  margin:0;
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background: var(--bg);
   color: var(--fg);
@@ -19,34 +19,34 @@ body{
 }
 
 /* Header */
-.header{
+.header {
   max-width: var(--max);
-  margin:0 auto;
+  margin: 0 auto;
   padding: var(--pad);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.brand{
+.brand {
   font: 600 15px/1 "Inter", sans-serif;
-  text-decoration:none;
-  color:var(--fg);
+  text-decoration: none;
+  color: var(--fg);
   text-transform: lowercase;
 }
-.nav a{
+.nav a {
   font: 600 15px/1 "Inter", sans-serif;
-  text-decoration:none;
-  color:var(--fg);
-  margin-left:20px;
+  text-decoration: none;
+  color: var(--fg);
+  margin-left: 20px;
   text-transform: lowercase;
 }
 
 /* Layout */
-.container{ max-width: var(--max); margin:0 auto; padding:0 var(--pad); }
-.spacer-top{ margin-top: clamp(60px, 12vh, 140px); }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+.spacer-top { margin-top: clamp(60px, 12vh, 140px); }
 
 /* Headings */
-.h-section{
+.h-section {
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: clamp(22px, 4.5vw, 48px);
@@ -56,53 +56,56 @@ body{
 }
 
 /* Text */
-p{ margin:0 0 18px 0; }
-.intro{ max-width:760px; margin:0 auto 40px auto; }
+p { margin: 0 0 18px 0; }
+.intro { max-width: 760px; margin: 0 auto 40px auto; }
 
 /* About layout */
-.about-centered{
-  display:flex;
-  gap:40px;
-  justify-content:center;
-  align-items:flex-start;
-  margin-top:60px;
-  max-width:900px;
-  margin-left:auto;
-  margin-right:auto;
+.about-centered {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 60px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.about-centered img{
-  width:220px;
-  border-radius:8px;
+.about-centered img {
+  width: 220px;
+  border-radius: 8px;
 }
-.about-centered div{ max-width:500px; }
-.links a{
+.about-centered div { max-width: 500px; }
+.links a {
   font: 600 15px/1 "Inter", sans-serif;
   color: var(--fg);
-  margin-right:18px;
-  text-decoration:none;
+  margin-right: 18px;
+  text-decoration: none;
   text-transform: lowercase;
 }
 
 /* Chat box */
-.chat-box-mini{
-  margin:30px auto 0 auto;
-  max-width:700px;
-  background:#ffffff;
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:16px 18px;
-  font:600 15px/1 "Inter", sans-serif;
-  text-align:center;
+.chat-box-mini {
+  margin: 30px auto 0 auto;
+  max-width: 700px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+  font: 600 15px/1 "Inter", sans-serif;
+  text-align: center;
   text-transform: lowercase;
-  color:#4d4d4d;
-  box-shadow:0 2px 4px rgba(0,0,0,0.05);
+  color: #4d4d4d;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Responsive */
-@media(max-width:700px){
-  .about-centered{ flex-direction:column; align-items:center; text-align:center; }
+.chat-box-mini:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
+/* Footer */
 .footer {
   margin-top: 4rem;
   padding: 1rem 0;
@@ -112,33 +115,48 @@ p{ margin:0 0 18px 0; }
   text-align: center;
 }
 
-/* Mjuk hover + underline för alla länkytor */
-.nav a, .links a, .footer a{
+/* Hover underline (nav, links, footer) */
+.nav a, .links a, .footer a {
   position: relative;
   text-decoration: none;
   color: var(--fg);
   transition: color 0.4s ease;
 }
 
-.nav a:hover, .links a:hover, .footer a:hover{
+.nav a:hover, .links a:hover, .footer a:hover {
   color: #999;
 }
 
-.nav a::after, .links a::after, .footer a::after{
+.nav a::after, .links a::after, .footer a::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -2px;        /* nära texten */
-  width: 100%;
-  height: 4px;         /* tunn linje */
-  background: #999;
+  left: 50%;
+  bottom: -2px;
+  width: 70%;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
   opacity: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.45s ease, opacity 0.45s ease;
+  transform: scaleX(0) translateX(-50%);
+  transform-origin: center;
+  transition: transform 0.45s ease,
+              opacity 0.45s ease,
+              background-color 0.45s ease;
 }
 
-.nav a:hover::after, .links a:hover::after, .footer a:hover::after{
+.nav a:hover::after, .links a:hover::after, .footer a:hover::after {
   opacity: 1;
-  transform: scaleX(1);
+  transform: scaleX(1) translateX(-50%);
+  transition: transform 0.45s ease 0.1s,
+              opacity 0.45s ease 0.1s,
+              background-color 0.45s ease;
+}
+
+/* Responsive */
+@media(max-width:700px){
+  .about-centered{ 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+  }
 }
