@@ -45,14 +45,14 @@ main {
   Letter-spacing: -0.01em;
 }
 
-/* Helikopter—spin på hover */
+/* Bas: stilla logga */
 .brand--heli{
   display:inline-block;
   text-decoration:none;
   color:var(--fg);
   font-family:"Inter", sans-serif;
   font-variation-settings:"wght" 780;
-  font-weight:700;                 /* fallback */
+  font-weight:700;
   font-size:15px;
   letter-spacing:-0.01em;
   line-height:1;
@@ -60,20 +60,32 @@ main {
   will-change: transform;
 }
 
-/* snurra så länge man hovrar */
+/* Hover: först accelererar den (spin-up), sen går den över till fast-spin */
 .brand--heli:hover{
-  animation: heli-spin 0.9s cubic-bezier(.25,.7,.15,1) infinite;
+  /* 1) heli-spinup kör EN gång (ingen loop)
+     2) heli-fast börjar efter 0.8s (samma som spinup-tiden) och loopar */
+  animation:
+    heli-spinup 0.8s cubic-bezier(.25,.8,.25,1) 1 both,
+    heli-fast   0.35s linear 0.8s infinite;
 }
 
-/* keyframes: jämn 360°-snurr */
-@keyframes heli-spin{
+/* Spin-up: öka varvtalet mot slutet (fler grader i slutet för känslan av acceleration) */
+@keyframes heli-spinup{
+  0%   { transform: rotate(0deg); }
+  40%  { transform: rotate(180deg); }   /* lugn start */
+  70%  { transform: rotate(540deg); }   /* ökar farten */
+  100% { transform: rotate(1080deg); }  /* 3 varv totalt → känns som att den “spolar upp” */
+}
+
+/* Fast steady spin (konstant snabb) */
+@keyframes heli-fast{
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
 
-/* om användaren föredrar mindre rörelse – ingen snurr, bara lätt färg */
+/* (valfritt) respektera reduced motion */
 @media (prefers-reduced-motion: reduce){
-  .brand--heli:hover{ animation:none; color:#666; }
+  .brand--heli:hover{ animation:none; }
 }
 
 .nav a {
