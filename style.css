@@ -2,16 +2,18 @@
   --bg:#fff; --fg:#111; --muted:#5b5f66; --pad:24px; --max:1100px;
   --body: 17px/1.6 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --display: "Manrope", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --card:#f7f7f8; --border:#e8e8ea;
 }
 
+/* base */
 *{ box-sizing:border-box }
 html,body{ height:100% }
-
 body{
   margin:0; background:var(--bg); color:var(--fg); font:var(--body);
   display:flex; flex-direction:column; min-height:100vh;
 }
 
+/* header – gemener */
 header{
   display:flex; justify-content:space-between; align-items:center;
   gap:16px; padding:var(--pad); max-width:var(--max); margin:0 auto; width:100%;
@@ -19,32 +21,51 @@ header{
 .brand{
   font-family:var(--display); font-weight:800; letter-spacing:.02em;
   text-decoration:none; color:inherit; font-size:18px;
+  text-transform:lowercase;
 }
-nav a{ text-decoration:none; color:inherit; font-weight:500 }
+nav a{
+  text-decoration:none; color:inherit; font-weight:500; text-transform:lowercase;
+  margin-left:16px;
+}
 
-main{ flex:1; padding:clamp(16px,4vw,40px); }
+/* layout */
+main{ flex:1; padding:clamp(16px,4vw,40px) }
 .container{ max-width:var(--max); margin:0 auto; text-align:center }
+.spacer-top{ margin-top:clamp(40px, 10vh, 120px) }  /* EXTRA LUFT UPPÅT */
 
+/* hero (samma som tidigare) */
 .hero{
   font-family:var(--display); font-weight:800; letter-spacing:-0.01em;
   font-size:clamp(2rem,5vw,3rem); margin:0 0 20px;
 }
+p{ max-width:720px; margin:0 auto 1rem }
 
-p{ max-width:650px; margin:0 auto 1rem; color:var(--fg) }
+/* AI chat card */
+.card{
+  margin:28px auto 0; max-width:720px; text-align:left;
+  background:var(--card); border:1px solid var(--border);
+  border-radius:12px; padding:20px 18px;
+}
+.card h3{
+  margin:0 0 8px; font-family:var(--display); font-weight:800; font-size:20px; letter-spacing:.01em;
+  text-transform:lowercase;
+}
+.card p{ margin:0; max-width:none }
 
-/* About-specifika */
-.about-container{
-  max-width:var(--max); margin:0 auto;
-  display:flex; flex-direction:column; align-items:center; gap:28px;
+/* about-specifika */
+.about-wrap{ max-width:var(--max); margin:0 auto }
+.about-hero{
+  font-family:var(--display); font-weight:800; letter-spacing:-.01em;
+  font-size:clamp(2rem,5vw,3rem); margin:0 0 18px; text-transform:lowercase;
+  text-align:left;
 }
 .unit{
-  display:grid; grid-template-columns: minmax(220px,280px) minmax(320px,1fr);
+  display:grid; grid-template-columns: minmax(200px,260px) minmax(320px,1fr);
   gap:clamp(20px,5vw,48px); align-items:start;
 }
 @media (max-width:900px){ .unit{ grid-template-columns:1fr } }
 
 img{ width:100%; height:auto; display:block; border-radius:6px }
-
-.text p{ margin:0 0 1rem }
-.links{ margin-top:.5rem }
-.links a{ text-decoration:none; color:var(--fg); font-weight:500; margin-right:16px }
+.text p{ margin:0 0 1rem; max-width:none; text-align:left }
+.links{ margin-top:.5rem; text-align:left }
+.links a{ text-decoration:none; color:var(--fg); font-weight:500; margin-right:16px; text-transform:lowercase }
