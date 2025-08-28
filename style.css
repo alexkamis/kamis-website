@@ -45,104 +45,35 @@ main {
   Letter-spacing: -0.01em;
 }
 
-/* ===== Organic RGB glitch (alltid på, snäll) – starkare vid hover ===== */
-
-/* ===== Glitch bara på hover ===== */
-
-.brand--glitch2{
-  position: relative;
-  display: inline-block;
-  text-decoration: none;
-  color: var(--fg);                 /* helt svart i normal-läge */
-  font-family: "Inter", sans-serif;
-  font-variation-settings: "wght" 780;
-  font-weight: 700;                 /* fallback */
-  font-size: 15px;
-  letter-spacing: -0.01em;
-  line-height: 1;
-  text-rendering: optimizeLegibility;
+/* Helikopter—spin på hover */
+.brand--heli{
+  display:inline-block;
+  text-decoration:none;
+  color:var(--fg);
+  font-family:"Inter", sans-serif;
+  font-variation-settings:"wght" 780;
+  font-weight:700;                 /* fallback */
+  font-size:15px;
+  letter-spacing:-0.01em;
+  line-height:1;
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
 
-/* Dölj RGB-halo och smear som standard */
-.brand--glitch2::before,
-.brand--glitch2::after,
-.brand--glitch2 .smear{
-  content: attr(data-text);
-  position: absolute; inset: 0;
-  pointer-events: none;
-  opacity: 0;
+/* snurra så länge man hovrar */
+.brand--heli:hover{
+  animation: heli-spin 0.9s cubic-bezier(.25,.7,.15,1) infinite;
 }
 
-/* Färgkopior (cyan + magenta) */
-.brand--glitch2::before{
-  color:#00d1ff;
-}
-.brand--glitch2::after{
-  color:#ff3b7b;
+/* keyframes: jämn 360°-snurr */
+@keyframes heli-spin{
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
-/* Smear */
-.brand--glitch2 .smear{
-  color: transparent;
-  background:
-    radial-gradient(closest-side, rgba(255,59,59,.95) 0 60%, transparent 62%) 0% 45% / 18% 70%,
-    radial-gradient(closest-side, rgba(255,230,0,.95) 0 60%, transparent 62%) 25% 15% / 16% 60%,
-    radial-gradient(closest-side, rgba(0,229,255,.95) 0 60%, transparent 62%) 55% 70% / 20% 65%,
-    radial-gradient(closest-side, rgba(122,92,255,.95) 0 60%, transparent 62%) 80% 30% / 14% 55%;
-  -webkit-background-clip:text;
-  background-clip:text;
-  filter: blur(.8px) brightness(1.05);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 22%, black 100%);
-          mask-image: linear-gradient(90deg, transparent 0%, black 22%, black 100%);
-  transform: skewX(-10deg);
-}
-
-/* HOVER = glitch aktiveras */
-.brand--glitch2:hover::before,
-.brand--glitch2:hover::after,
-.brand--glitch2:hover .smear{
-  opacity: .55;
-}
-
-.brand--glitch2:hover::before{
-  animation: rgb-drift 2.8s ease-in-out infinite;
-}
-.brand--glitch2:hover::after{
-  animation: rgb-drift-2 3.1s ease-in-out infinite;
-}
-.brand--glitch2:hover .smear{
-  opacity: .4;
-  animation: smear-flow 2.6s ease-in-out infinite alternate;
-}
-
-/* RGB drift keyframes */
-@keyframes rgb-drift{
-  0%   { transform: translate(0,0) }
-  25%  { transform: translate(-1px, 0.6px) }
-  50%  { transform: translate(1.2px,-0.5px) }
-  75%  { transform: translate(-0.6px,0.2px) }
-  100% { transform: translate(0,0) }
-}
-@keyframes rgb-drift-2{
-  0%   { transform: translate(0,0) }
-  25%  { transform: translate(0.8px,-0.5px) }
-  50%  { transform: translate(-1.1px,0.4px) }
-  75%  { transform: translate(0.6px,0.1px) }
-  100% { transform: translate(0,0) }
-}
-
-/* Smear-flow keyframes */
-@keyframes smear-flow{
-  0%   { background-position: 0% 45%, 25% 15%, 55% 70%, 80% 30%; }
-  50%  { background-position: 12% 44%, 33% 18%, 63% 72%, 86% 28%; }
-  100% { background-position: 0% 45%, 25% 15%, 55% 70%, 80% 30%; }
-}
-
-/* reduced motion */
+/* om användaren föredrar mindre rörelse – ingen snurr, bara lätt färg */
 @media (prefers-reduced-motion: reduce){
-  .brand--glitch2::before,
-  .brand--glitch2::after,
-  .brand--glitch2 .smear{ animation:none; }
+  .brand--heli:hover{ animation:none; color:#666; }
 }
 
 .nav a {
