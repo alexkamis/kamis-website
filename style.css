@@ -45,72 +45,120 @@ main {
   Letter-spacing: -0.01em;
 }
 
-/* Bas: gör wordmarken tung och tajt */
+/* ===== GLITCH LOGO ===== */
 .brand--glitch{
-  position: relative;
-  display: inline-block;
-  text-decoration: none;
-  color: var(--fg);
-  font-family: "Inter", sans-serif;
-  font-variation-settings: "wght" 780;
-  font-weight: 800;                 /* fallback */
-  font-size: 20px;
-  letter-spacing: -0.01em;
-  line-height: 1;
-  text-rendering: optimizeLegibility;
+  position:relative;
+  display:inline-block;
+  text-decoration:none;
+  color:var(--fg);
+  font-family:"Inter",sans-serif;
+  font-variation-settings:"wght" 780;
+  font-weight:700;                 /* fallback */
+  font-size:15px;
+  letter-spacing:-0.01em;
+  line-height:1;
+  /* styr bas-styrkan (normal) */
+  --shift: 0.6px;                  /* hur långt RGB kopior rör sig */
+  --blur : 0.15px;
+  --clipSpeed: 2300ms;             /* slice-hastighet */
+  --rgbSpeed : 2200ms;             /* RGB-skift-hastighet */
 }
 
-/* De två färgkopiorna */
+/* två färgkopior (cyan + magenta) som alltid rör sig lite */
 .brand--glitch::before,
 .brand--glitch::after{
-  content: attr(data-text);
-  position: absolute; left: 0; top: 0;
-  pointer-events: none;
-  opacity: .55;
-  filter: blur(.15px);              /* lite CRT-känsla */
-}
-.brand--glitch::before{ color: #00d1ff; transform: translate(0,0); }
-.brand--glitch::after { color: #ff3b3b; transform: translate(0,0); }
-
-/* Glitch-animation på hover (subtil) */
-.brand--glitch:hover::before,
-.brand--glitch:hover::after{
-  animation: glitch-shift 1.6s steps(12, end) infinite;
-  will-change: transform;
+  content:attr(data-text);
+  position:absolute; inset:0;
+  pointer-events:none;
+  opacity:.55;
+  filter:blur(var(--blur));
+  mix-blend-mode:screen;
+  overflow:hidden;
 }
 
-/* Vill du alltid animera? Lägg classen .is-animated på länken */
-.brand--glitch.is-animated::before,
-.brand--glitch.is-animated::after{
-  animation: glitch-shift 1.6s steps(12, end) infinite;
+.brand--glitch::before{
+  color:#00d1ff;                   /* cyan */
+  animation:
+    glitch-clip var(--clipSpeed) steps(24,end) infinite,
+    rgb-shift var(--rgbSpeed) steps(22,end) infinite;
+  transform:translate(0,0);
+}
+.brand--glitch::after{
+  color:#ff3b7b;                   /* magenta */
+  animation:
+    glitch-clip-2 calc(var(--clipSpeed)*0.92) steps(24,end) infinite,
+    rgb-shift-2 calc(var(--rgbSpeed)*1.05) steps(22,end) infinite;
+  transform:translate(0,0);
 }
 
-/* Nyckelrutor: små ryck i x/y-led */
-@keyframes glitch-shift{
-  0%   { transform: translate(0, 0); }
-  10%  { transform: translate(-1px,  0.5px); }
-  20%  { transform: translate( 1.2px, -0.6px); }
-  30%  { transform: translate(-0.8px, 0); }
-  40%  { transform: translate(0.6px,  0.8px); }
-  50%  { transform: translate(-1.4px, -0.8px); }
-  60%  { transform: translate( 1px,   0.6px); }
-  70%  { transform: translate(-0.6px, -0.4px); }
-  80%  { transform: translate( 0.8px,  0.2px); }
-  90%  { transform: translate(-0.4px,  0.6px); }
-  100% { transform: translate(0, 0); }
+/* HOVER = starkare glitch (större förskjutning & snabbare) */
+.brand--glitch:hover{
+  --shift: 2.4px;
+  --blur : 0.25px;
+  --clipSpeed: 1400ms;
+  --rgbSpeed : 1200ms;
 }
 
-/* Om användaren valt reducerad rörelse → ingen animation, bara diskret offset */
+/* RGB-förskjutning (x/y ryck) */
+@keyframes rgb-shift{
+  0%{transform:translate(0,0)}
+  10%{transform:translate(calc(var(--shift)*-1), calc(var(--shift)* 0.5))}
+  20%{transform:translate(calc(var(--shift)* 1.2), calc(var(--shift)*-0.6))}
+  30%{transform:translate(calc(var(--shift)*-0.8), 0)}
+  40%{transform:translate(calc(var(--shift)* 0.6), calc(var(--shift)* 0.8))}
+  50%{transform:translate(calc(var(--shift)*-1.4), calc(var(--shift)*-0.8))}
+  60%{transform:translate(calc(var(--shift)* 1.0), calc(var(--shift)* 0.6))}
+  70%{transform:translate(calc(var(--shift)*-0.6), calc(var(--shift)*-0.4))}
+  80%{transform:translate(calc(var(--shift)* 0.8), calc(var(--shift)* 0.2))}
+  90%{transform:translate(calc(var(--shift)*-0.4), calc(var(--shift)* 0.6))}
+  100%{transform:translate(0,0)}
+}
+@keyframes rgb-shift-2{
+  0%{transform:translate(0,0)}
+  12%{transform:translate(calc(var(--shift)* 0.8), calc(var(--shift)*-0.6))}
+  24%{transform:translate(calc(var(--shift)*-1.2), calc(var(--shift)* 0.4))}
+  36%{transform:translate(calc(var(--shift)* 0.6), 0)}
+  48%{transform:translate(calc(var(--shift)*-0.8), calc(var(--shift)*-0.8))}
+  60%{transform:translate(calc(var(--shift)* 1.1), calc(var(--shift)* 0.6))}
+  72%{transform:translate(calc(var(--shift)*-0.6), calc(var(--shift)* 0.2))}
+  84%{transform:translate(calc(var(--shift)* 0.9), calc(var(--shift)*-0.4))}
+  100%{transform:translate(0,0)}
+}
+
+/* Slice/glitch lines – klipper ut remsor olika högt */
+@keyframes glitch-clip{
+  0%   { clip-path: inset(0 0 88% 0); }
+  10%  { clip-path: inset(20% 0 62% 0); }
+  20%  { clip-path: inset(40% 0 40% 0); }
+  30%  { clip-path: inset(65% 0 20% 0); }
+  40%  { clip-path: inset(10% 0 70% 0); }
+  50%  { clip-path: inset(75% 0 5%  0); }
+  60%  { clip-path: inset(32% 0 44% 0); }
+  70%  { clip-path: inset(5%  0 82% 0); }
+  80%  { clip-path: inset(55% 0 25% 0); }
+  90%  { clip-path: inset(15% 0 65% 0); }
+  100% { clip-path: inset(0 0 88% 0); }
+}
+@keyframes glitch-clip-2{
+  0%   { clip-path: inset(80% 0 8% 0); }
+  10%  { clip-path: inset(58% 0 28% 0); }
+  20%  { clip-path: inset(35% 0 50% 0); }
+  30%  { clip-path: inset(8%  0 82% 0); }
+  40%  { clip-path: inset(48% 0 35% 0); }
+  50%  { clip-path: inset(2%  0 92% 0); }
+  60%  { clip-path: inset(70% 0 12% 0); }
+  70%  { clip-path: inset(22% 0 60% 0); }
+  80%  { clip-path: inset(62% 0 20% 0); }
+  90%  { clip-path: inset(28% 0 52% 0); }
+  100% { clip-path: inset(80% 0 8% 0); }
+}
+
+/* Mindre rörelse för de som föredrar det */
 @media (prefers-reduced-motion: reduce){
-  .brand--glitch:hover::before,
-  .brand--glitch:hover::after,
-  .brand--glitch.is-animated::before,
-  .brand--glitch.is-animated::after{
-    animation: none;
-  }
-  .brand--glitch::before{ transform: translate(-0.6px, 0); }
-  .brand--glitch::after { transform: translate( 0.6px, 0); }
+  .brand--glitch::before, .brand--glitch::after{ animation:none; }
+  .brand--glitch{ --shift:0; --blur:0; }
 }
+
 .nav a {
   font: 600 15px/1 "Inter", sans-serif;
   text-decoration: none;
