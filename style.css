@@ -135,7 +135,7 @@ p { margin: 0 0 18px 0; }
   width: 70%;
   height: 2px;
   border-radius: 2px;
-  background: currentColor;
+  background: rgba(153, 153, 153, 0.7); /* samma som #999 men 70% opacitet */
   opacity: 0;
   transform: scaleX(0) translateX(-50%);
   transform-origin: center;
