@@ -50,9 +50,11 @@ main {
   letter-spacing:-0.01em;      /* lite tätare */
 }
 .brand .star{
-  font-size:20px;              /* om du kör tecken som * */
+  font-size:15px;              /* om du kör tecken som * */
   font-weight:900;
   line-height:1;
+  letter-spacing:-0.05em;      /* lite tätare */
+
 }
 .nav a {
   font: 600 15px/1 "Inter", sans-serif;
