@@ -24,68 +24,78 @@ body {
   flex-direction: column;
 }
 
-main {
-  flex: 1; /* trycker ner footern */
-}
+main { flex: 1; }
 
-/* Header */
+/* Topbar + header */
+.topbar {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  border-bottom: none;
+  z-index: 1000;
+  width: 100%;
+}
 .header {
   max-width: var(--max);
   margin: 0 auto;
-  padding: var(--pad);
+  padding: 1.2rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.brand {
-  font: 700 15px/1 "Inter", sans-serif;
+
+/* Bas-brand (används även av brand--fit) */
+.brand{
+  font: 700 15px/1 "Inter", sans-serif; /* 15px, vikt 700 */
   text-decoration: none;
   color: var(--fg);
   text-transform: lowercase;
-  Letter-spacing: -0.01em;
+  letter-spacing: -0.01em; /* fix: little tighter */
 }
 
-/* Container + ordmärke */
-.brand--swap{
+/* ========= Brand morph: text -> robots (breddmatchning) ========= */
+.brand--fit{
+  /* samma typografi som .brand */
+  font: 700 15px/1 "Inter", sans-serif;
+  color: var(--fg);
   position: relative;
   display: inline-block;
-  color: var(--fg);
-  font-family: "Inter", sans-serif;
-  font-variation-settings: "wght" 780;
-  font-weight: 800;            /* fallback */
-  font-size: 20px;             /* ändra här om du vill skala loggan */
   letter-spacing: -0.01em;
-  line-height: 1;
 }
 
-/* Texten (synlig först) */
-.brand--swap .brand-text{
-  display: inline-block;
-  transition: opacity .35s ease, transform .35s ease;
-}
-
-/* Robotbilden — ligger exakt ovanpå texten */
-.brand--swap .brand-robots{
-  position: absolute; left: 0; top: 50%;
-  transform: translateY(-50%) scale(0.98);
-  height: 1em;                /* matcha textens höjd */
-  width: auto;                /* behåll SVG:ns proportioner */
-  opacity: 0;
-  transition: opacity .35s ease, transform .35s ease;
-  filter: grayscale(1) contrast(1) brightness(1);
+/* “Measure” bestämmer exakt containerbredd utifrån texten */
+.brand--fit .brand-measure{
+  visibility: hidden;
+  white-space: nowrap;
   pointer-events: none;
 }
 
-/* Morph (hover) */
-.brand--swap:hover .brand-text{ opacity: 0; transform: translateY(-3px); }
-.brand--swap:hover .brand-robots{ opacity: 1; transform: translateY(-50%) scale(1); }
-
-/* Accessibility: minimera rörelse om användaren valt det */
-@media (prefers-reduced-motion: reduce){
-  .brand--swap .brand-text,
-  .brand--swap .brand-robots{ transition: none; }
+/* Lager vi växlar mellan (text vs robots) */
+.brand--fit .brand-layer{
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: flex-start;
 }
 
+/* Texten: synlig först */
+.brand--fit .brand-text{
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+/* Robot-SVG: skalas till EXAKT samma bredd som texten */
+.brand--fit .brand-robots{
+  width: 100%;    /* matcha textens bredd */
+  height: auto;   /* låt höjden följa proportionerna */
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity .35s ease, transform .35s ease;
+  pointer-events: none;
+}
+
+/* Hover: morph */
+.brand--fit:hover .brand-text { opacity: 0; transform: translateY(-3px); }
+.brand--fit:hover .brand-robots { opacity: 1; transform: scale(1); }
+
+/* Navigation */
 .nav a {
   font: 600 15px/1 "Inter", sans-serif;
   text-decoration: none;
@@ -123,10 +133,7 @@ p { margin: 0 0 18px 0; }
   margin-left: auto;
   margin-right: auto;
 }
-.about-centered img {
-  width: 220px;
-  border-radius: 8px;
-}
+.about-centered img { width: 220px; border-radius: 8px; }
 .about-centered div { max-width: 500px; }
 .links a {
   font: 600 15px/1 "Inter", sans-serif;
@@ -149,10 +156,8 @@ p { margin: 0 0 18px 0; }
   text-transform: lowercase;
   color: #4d4d4d;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
 .chat-box-mini:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.08);
@@ -176,10 +181,7 @@ p { margin: 0 0 18px 0; }
   color: var(--fg);
   transition: color 0.4s ease;
 }
-
-.nav a:hover, .links a:hover, .footer a:hover {
-  color: #999;
-}
+.nav a:hover, .links a:hover, .footer a:hover { color: #999; }
 
 .nav a::after, .links a::after, .footer a::after {
   content: "";
@@ -189,47 +191,19 @@ p { margin: 0 0 18px 0; }
   width: 70%;
   height: 2px;
   border-radius: 2px;
-  background: rgba(153, 153, 153, 0.7); /* samma som #999 men 70% opacitet */
+  background: rgba(153, 153, 153, 0.7);
   opacity: 0;
   transform: scaleX(0) translateX(-50%);
   transform-origin: center;
-  transition: transform 0.45s ease,
-              opacity 0.45s ease,
-              background-color 0.45s ease;
+  transition: transform 0.45s ease, opacity 0.45s ease, background-color 0.45s ease;
 }
-
 .nav a:hover::after, .links a:hover::after, .footer a:hover::after {
   opacity: 1;
   transform: scaleX(1) translateX(-50%);
-  transition: transform 0.45s ease 0.1s,
-              opacity 0.45s ease 0.1s,
-              background-color 0.45s ease;
+  transition: transform 0.45s ease 0.1s, opacity 0.45s ease 0.1s, background-color 0.45s ease;
 }
 
 /* Responsive */
 @media(max-width:700px){
-  .about-centered{ 
-    flex-direction: column; 
-    align-items: center; 
-    text-align: center; 
-  }
-}
-
-.topbar {
-  position: sticky;
-  top: 0;
-  background: var(--bg);
-  /* ta bort linjen, eller byt färg om du vill ha den svagare */
-  border-bottom: none;
-  z-index: 1000;
-  width: 100%;
-}
-
-.header {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 1.2rem 1rem;   /* lite mer luft än 0.8rem */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  .about-centered{ flex-direction: column; align-items: center; text-align: center; }
 }
