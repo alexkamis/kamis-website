@@ -37,33 +37,12 @@ main {
   justify-content: space-between;
   align-items: center;
 }
-
-/* Brand: fetare text + tajtare spacing + ikon */
-.brand{
-  display:flex; align-items:center; gap:6px;
-  color: var(--fg); text-decoration:none;
-}
-.brand-word{
-  font-family:"Inter", sans-serif;
-  /* Inter är variabel – ge tydlig vikt */
-  font-variation-settings: "wght" 780;
-  font-weight:800;               /* fallback */
-  font-size:20px;
-  letter-spacing:-0.01em;
-  line-height:1;
-}
-.logo-star{
-  width:20px; height:20px; display:inline-block;
-  transform: translateY(1px);    /* finjustera vertikalt */
-}
-
-/* Justera höjden på topbar som tidigare */
-.topbar{ position: sticky; top:0; background:var(--bg); z-index:1000; width:100%; }
-.header{
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 1.2rem 1rem;          /* tunn, samma känsla som footer */
-  display:flex; justify-content:space-between; align-items:center;
+.brand {
+  font: 700 15px/1 "Inter", sans-serif;
+  text-decoration: none;
+  color: var(--fg);
+  text-transform: lowercase;
+  Letter-spacing: -0.01em;
 }
 .nav a {
   font: 600 15px/1 "Inter", sans-serif;
