@@ -36,6 +36,66 @@ Now we live in a time where I can actually work with them — and I do, every da
             <a href="https://www.linkedin.com/in/alexkamis" target="_blank" rel="noopener">linkedin</a>
             <a href="mailto:alex@kamis.works">email</a>
           </div>
+<!-- Resting robot (inline SVG). Färgen följer currentColor (din textfärg). -->
+<svg class="robot-rest" viewBox="0 0 260 140" width="220" height="120" role="img" aria-label="Resting robot">
+  <style>
+    .line{stroke:currentColor; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; fill:none}
+    .frame{fill:none; stroke:currentColor; stroke-width:3}
+    .eye{stroke:currentColor; stroke-width:3; stroke-linecap:round; fill:none}
+    .shadow{fill:currentColor; opacity:.06}
+    .zzz{font:700 18px Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         fill:currentColor; opacity:.45; animation:float 3s ease-in-out infinite}
+    .breath{animation:breathe 4s ease-in-out infinite}
+
+    @keyframes breathe{ 0%,100%{ transform:translateY(0) } 50%{ transform:translateY(-2px) } }
+    @keyframes float  { 0%{transform:translateY(0);opacity:.35}
+                        50%{transform:translateY(-6px);opacity:.7}
+                        100%{transform:translateY(0);opacity:.35} }
+  </style>
+
+  <!-- Lätt skugga under -->
+  <ellipse class="shadow" cx="116" cy="108" rx="62" ry="10"/>
+
+  <!-- Hela roboten roteras lite för “ligger”-känsla -->
+  <g transform="translate(52,70) rotate(-12)">
+    <!-- Kudde bakom huvudet (svag, följer currentColor) -->
+    <rect x="142" y="18" width="26" height="46" rx="8" fill="currentColor" opacity=".08"/>
+
+    <!-- Kropp -->
+    <g class="breath">
+      <rect class="frame" x="12"  y="30" width="120" height="44" rx="10"/>
+      <!-- arm/ben (enkelt) -->
+      <line class="line" x1="20" y1="76" x2="34" y2="86"/>
+      <line class="line" x1="44" y1="76" x2="58" y2="86"/>
+      <line class="line" x1="84" y1="76" x2="96" y2="88"/>
+      <line class="line" x1="106" y1="76" x2="118" y2="88"/>
+    </g>
+
+    <!-- Huvud -->
+    <rect class="frame" x="124" y="18" width="44" height="44" rx="8"/>
+    <!-- Antenn -->
+    <line class="line" x1="146" y1="18" x2="146" y2="8"/>
+    <circle cx="146" cy="6" r="2.5" fill="currentColor"/>
+
+    <!-- Ögon (slutna) -->
+    <path class="eye" d="M132 38 q 6 -5 12 0"/>
+    <path class="eye" d="M148 38 q 6 -5 12 0"/>
+
+    <!-- Liten mun -->
+    <path class="line" d="M136 48 q 8 6 16 0"/>
+  </g>
+
+  <!-- Zzz som flyter mjukt uppåt -->
+  <g transform="translate(198,34)">
+    <text class="zzz">Z</text>
+  </g>
+  <g transform="translate(210,22)">
+    <text class="zzz" style="animation-delay:.35s">z</text>
+  </g>
+  <g transform="translate(220,12)">
+    <text class="zzz" style="animation-delay:.7s">z</text>
+  </g>
+</svg>
         </div>
       </section>
     </div>
