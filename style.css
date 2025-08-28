@@ -37,12 +37,22 @@ main {
   justify-content: space-between;
   align-items: center;
 }
-.brand {
-  font: 700 15px/1 "Inter", sans-serif;
-  text-decoration: none;
-  color: var(--fg);
-  text-transform: lowercase;
-  Letter-spacing: -0.01em;
+.brand{
+  display:flex; align-items:center; gap:6px;
+  text-decoration:none; color:var(--fg);
+}
+.brand .word{
+  /* Inter är variabel – dra upp vikten rejält */
+  font-family:"Inter", sans-serif;
+  font-variation-settings:"wght" 780;
+  font-weight:800;             /* fallback om variabel ej funkar */
+  font-size:20px;              /* höj/lägre efter smak */
+  letter-spacing:-0.01em;      /* lite tätare */
+}
+.brand .star{
+  font-size:20px;              /* om du kör tecken som * */
+  font-weight:900;
+  line-height:1;
 }
 .nav a {
   font: 600 15px/1 "Inter", sans-serif;
