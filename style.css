@@ -175,7 +175,8 @@ p { margin: 0 0 18px 0; }
   position: sticky;
   top: 0;
   background: var(--bg);
-  border-bottom: 1px solid #eee;
+  /* ta bort linjen, eller byt färg om du vill ha den svagare */
+  border-bottom: none;
   z-index: 1000;
   width: 100%;
 }
@@ -183,7 +184,7 @@ p { margin: 0 0 18px 0; }
 .header {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 0.8rem 1rem;  /* liten höjd, matchar footern */
+  padding: 1rem 1rem;   /* lite mer luft än 0.8rem */
   display: flex;
   justify-content: space-between;
   align-items: center;
