@@ -1,50 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Kamis Works</title>
+  <meta charset="UTF-8" />
+  <title>KAMIS works</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Helvetica, Arial, sans-serif;
-      font-size: 17px;
-      margin: 0;
-      background-color: #fff;
-      color: #111;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+    :root{
+      --bg:#fff; --fg:#111; --muted:#5b5f66; --pad:24px; --max:1100px;
+      --body: 17px/1.6 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --display: "Manrope", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0; background:var(--bg); color:var(--fg);
+      font: var(--body);
+      display:flex; flex-direction:column; min-height:100vh;
     }
-    header a {
-      color: #111;
-      text-decoration: none;
-      font-weight: 500;
+    header{
+      display:flex; justify-content:space-between; align-items:center;
+      gap:16px; padding:var(--pad); max-width:var(--max); margin:0 auto; width:100%;
     }
-    main {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      line-height: 1.5;
+    .brand{
+      font-family:var(--display); font-weight:800; letter-spacing:.02em;
+      text-decoration:none; color:inherit; font-size:18px;
+    }
+    nav a{ text-decoration:none; color:inherit; font-weight:500 }
+    main{
+      flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      text-align:center; padding:clamp(16px,4vw,40px);
+    }
+    .hero{
+      font-family:var(--display); font-weight:800; letter-spacing:-0.01em;
+      font-size:clamp(2rem,5vw,3rem); margin:0 0 1rem;
+    }
+    .lead{
+      max-width:720px; color:var(--fg);
+      font: var(--body);
+      letter-spacing:.01em;
     }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html"><strong>KAMIS W𒀭RKS</strong></a>
-    <a href="about.html">About</a>
+    <a class="brand" href="/index.html">KAMIS works</a>
+    <nav><a href="/about.html">About</a></nav>
   </header>
+
   <main>
-    <p>
-      At Kamis Works we help entrepreneurs grow by integrating AI into their journey.  
-      We believe in unlocking possibilities—turning ideas into impact without the fluff.
+    <h1 class="hero">AI that works for entrepreneurs</h1>
+    <p class="lead">
+      We help entrepreneurs make meaningful progress with AI—practical, measurable, and focused.
+      Strategy, workshops, and hands-on implementation without the fluff.
     </p>
   </main>
 </body>

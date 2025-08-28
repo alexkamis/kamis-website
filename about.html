@@ -1,79 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About – Kamis Works</title>
+  <meta charset="UTF-8" />
+  <title>About – KAMIS works</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Helvetica, Arial, sans-serif;
-      font-size: 17px;
-      margin: 0;
-      background-color: #fff;
-      color: #111;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+    :root{
+      --bg:#fff; --fg:#111; --muted:#5b5f66; --pad:24px; --max:1100px;
+      --body: 17px/1.6 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --display: "Manrope", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
+    *{ box-sizing:border-box }
+    body{ margin:0; background:var(--bg); color:var(--fg); font:var(--body) }
+    header{
+      display:flex; justify-content:space-between; align-items:center;
+      gap:16px; padding:var(--pad); max-width:var(--max); margin:0 auto; width:100%;
     }
-    header a {
-      color: #111;
-      text-decoration: none;
-      font-weight: 500;
+    .brand{ font-family:var(--display); font-weight:800; letter-spacing:.02em; text-decoration:none; color:inherit; font-size:18px }
+    nav a{ text-decoration:none; color:inherit; font-weight:500 }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:clamp(16px,4vw,40px) var(--pad) 56px }
+    .grid{
+      display:grid; grid-template-columns: 1fr 1.1fr; gap:clamp(20px,5vw,48px); align-items:start;
     }
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 40px;
-      padding: 40px;
-    }
-    img {
-      max-width: 300px;
-      height: auto;
-      border-radius: 6px; /* rundade hörn subtilt */
-    }
-    .text {
-      max-width: 500px;
-      line-height: 1.5;
-    }
-    .links {
-      margin-top: 20px;
-    }
-    .links a {
-      color: #111;
-      text-decoration: none;
-      font-weight: 500;
-      margin-right: 15px;
-    }
+    @media (max-width:900px){ .grid{ grid-template-columns:1fr } }
+    img{ width:100%; height:auto; display:block; border-radius:6px }
+    h1{ font-family:var(--display); font-weight:800; letter-spacing:.01em; margin:.1rem 0 1rem; font-size:26px }
+    p{ margin:0 0 1rem }
+    .links{ margin-top:.5rem }
+    .links a{ text-decoration:none; color:var(--fg); font-weight:500; margin-right:16px }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html"><strong>KAMIS W𒀭RKS</strong></a>
-    <a href="about.html">About</a>
+    <a class="brand" href="/index.html">KAMIS works</a>
+    <nav><a href="/about.html">About</a></nav>
   </header>
-  <main>
-    <img src="childhood.jpg" alt="Childhood photo">
-    <div class="text">
-      <p>
-        I have always loved robots. When others saw just a toy, I saw the future.  
-        Now we live in a time where I actually get to work with them every day.  
-        At Kamis Works I help entrepreneurs evolve and integrate AI into their journey,  
-        so they too can experience the same feeling I once had—  
-        that the world suddenly opens up to new possibilities.
-      </p>
-      <div class="links">
-        <a href="https://www.linkedin.com/in/alexkamis" target="_blank">LinkedIn</a>
-        <a href="mailto:alex@kamis.works">Email</a>
+
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <img src="/images/childhood.jpg" alt="Childhood photo" loading="lazy">
+      </div>
+      <div>
+        <h1>About</h1>
+        <p>
+          I have always loved robots. When others saw a toy, I saw the future. Now we live in a time
+          where I can actually work with them—and I do, every day. At KAMIS works I help entrepreneurs
+          evolve and bring AI into their journey, so they can experience the same shift I did: that
+          the world suddenly opens to new possibilities.
+        </p>
+        <div class="links">
+          <a href="https://www.linkedin.com/in/alexkamis" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:alex@kamis.works">Email</a>
+        </div>
       </div>
     </div>
-  </main>
+  </div>
 </body>
 </html>
