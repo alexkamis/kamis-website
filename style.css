@@ -53,47 +53,30 @@ main { flex: 1; }
   letter-spacing: -0.01em; /* fix: little tighter */
 }
 
-/* ========= Brand morph: text -> robots (breddmatchning) ========= */
-.brand--fit{
-  /* samma typografi som .brand */
+/* Final logotype */
+.brand--final {
   font: 700 15px/1 "Inter", sans-serif;
+  text-decoration: none;
   color: var(--fg);
-  position: relative;
-  display: inline-block;
+  text-transform: lowercase;
   letter-spacing: -0.01em;
+  display: inline-block;
 }
 
-/* “Measure” bestämmer exakt containerbredd utifrån texten */
-.brand--fit .brand-measure{
-  visibility: hidden;
-  white-space: nowrap;
-  pointer-events: none;
+.brand--final span {
+  transition: color 0.35s ease;
 }
 
-/* Lager vi växlar mellan (text vs robots) */
-.brand--fit .brand-layer{
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: flex-start;
+/* Hover: allt grått... */
+.brand--final:hover span {
+  color: #999; /* samma som länkhover */
 }
 
-/* Texten: synlig först */
-.brand--fit .brand-text{
-  transition: opacity .35s ease, transform .35s ease;
+/* ...utom 'a' och 'i' i "kamis" som behåller svart */
+.brand--final:hover .a,
+.brand--final:hover .i {
+  color: var(--fg);
 }
-
-/* Robot-SVG: skalas till EXAKT samma bredd som texten */
-.brand--fit .brand-robots{
-  width: 100%;    /* matcha textens bredd */
-  height: auto;   /* låt höjden följa proportionerna */
-  opacity: 0;
-  transform: scale(0.98);
-  transition: opacity .35s ease, transform .35s ease;
-  pointer-events: none;
-}
-
-/* Hover: morph */
-.brand--fit:hover .brand-text { opacity: 0; transform: translateY(-3px); }
-.brand--fit:hover .brand-robots { opacity: 1; transform: scale(1); }
 
 /* Navigation */
 .nav a {
