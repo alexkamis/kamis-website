@@ -171,39 +171,20 @@ p { margin: 0 0 18px 0; }
   }
 }
 
-/* Sticky topbar som matchar footer-bandet */
-.topbar{
+.topbar {
   position: sticky;
   top: 0;
   background: var(--bg);
-  border-bottom: 1px solid #eee;  /* samma “band” som footerns border-top */
+  border-bottom: 1px solid #eee;
   z-index: 1000;
   width: 100%;
 }
 
-/* Headerlayout som tidigare (vänster logo, höger nav) */
-.header{
+.header {
   max-width: var(--max);
   margin: 0 auto;
-  padding: var(--pad);
+  padding: 0.8rem 1rem;  /* liten höjd, matchar footern */
   display: flex;
-  justify-content: space-between;  /* brand vänster, nav höger */
+  justify-content: space-between;
   align-items: center;
-}
-
-/* Se till att textjustering inte centrar allt av misstag */
-.header, .nav { text-align: left; }
-
-/* skugga när sidan är scrollad */
-.topbar {
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
-}
-.topbar.elevated {
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  border-bottom-color: #e6e6e6; /* aning mörkare när skugga syns */
-}
-
-/* om användaren föredrar mindre animationer */
-@media (prefers-reduced-motion: reduce){
-  .topbar { transition: none; }
 }
