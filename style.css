@@ -53,28 +53,22 @@ main { flex: 1; }
   letter-spacing: -0.01em; /* fix: little tighter */
 }
 
-/* Final logotype */
-.brand--final {
+/* Final text-only logotype (normal spacing) */
+.brand--final{
   font: 700 15px/1 "Inter", sans-serif;
+  letter-spacing: 0;               /* normal tracking */
+  text-transform: lowercase;
   text-decoration: none;
   color: var(--fg);
-  text-transform: lowercase;
-  letter-spacing: -0.01em;
-  display: inline-block;
 }
 
-.brand--final span {
-  transition: color 0.35s ease;
+/* Hover: gör allt grått ... */
+.brand--final:hover{
+  color: #999;
 }
 
-/* Hover: allt grått... */
-.brand--final:hover span {
-  color: #999; /* samma som länkhover */
-}
-
-/* ...utom 'a' och 'i' i "kamis" som behåller svart */
-.brand--final:hover .a,
-.brand--final:hover .i {
+/* ...utom a och i som ska stanna svarta */
+.brand--final:hover .keep{
   color: var(--fg);
 }
 
