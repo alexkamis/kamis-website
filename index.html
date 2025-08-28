@@ -4,34 +4,33 @@
   <meta charset="UTF-8" />
   <title>kamis works</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+  <!-- Montserrat som fallback om Proxima Nova inte finns lokalt -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <a class="brand" href="/index.html">kamis works</a>
-    <nav><a href="/about.html">about</a></nav>
+
+  <header class="header">
+    <a class="brand" href="index.html">kamis works</a>
+    <nav class="nav">
+      <a href="about.html">about</a>
+    </nav>
   </header>
 
   <main>
     <div class="container spacer-top">
-      <h1 class="hero">AI that works for entrepreneurs</h1>
-      <p>
+      <h1 class="h-hero">AI that works for entrepreneurs</h1>
+
+      <p style="max-width:760px">
         At <strong>Kamis works</strong>, we help companies move beyond the buzz and turn AI into
         real impact. With a focus on clarity, simplicity, and measurable results, we guide
         entrepreneurs through workshops, strategy, and implementation — no fluff, just progress.
       </p>
 
-      <!-- AI chat info card -->
-      <section class="card" id="chat">
-        <h3>ai chat (coming soon)</h3>
-        <p>
-          A lightweight, on-site AI assistant tailored to your content and services. Visitors can ask
-          questions about what you do, get quick guidance, and book time — all inside the site.
-          We’ll power it with a private knowledge base and guardrails, so answers stay helpful and on-brand.
-        </p>
-      </section>
+      <!-- Endast en neutral ruta enligt önskemål -->
+      <div class="card">ai chat coming soon</div>
     </div>
   </main>
+
 </body>
 </html>

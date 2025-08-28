@@ -4,26 +4,30 @@
   <meta charset="UTF-8" />
   <title>about – kamis works</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
+  <!-- Montserrat som fallback om Proxima Nova inte finns lokalt -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- liten, gemen logga; ingen nav här -->
-  <header>
-    <a class="brand" href="/index.html">kamis works</a>
-    <nav><!-- tom enligt önskemål --></nav>
+
+  <header class="header">
+    <a class="brand" href="index.html">kamis works</a>
+    <nav class="nav">
+      <a href="about.html">about</a>
+    </nav>
   </header>
 
   <main>
-    <div class="about-wrap spacer-top">
-      <!-- Egen topp: bara rubriken -->
-      <h1 class="about-hero">about</h1>
+    <div class="container spacer-top">
+      <!-- egen rubrik för om-sidan, som i skissen -->
+      <h1 class="h-section">my story</h1>
 
-      <section class="unit">
+      <section class="about-grid">
         <div>
-          <img src="/images/childhood.jpg" alt="Childhood photo of Alexandra Kamis" loading="lazy">
+          <img src="images/childhood.jpg" alt="Alexandra as a child holding a robot">
         </div>
-        <div class="text">
+
+        <div>
           <p>
             This is me, six years old. My name is Alexandra Kamis and I’ve always loved robots.
             When others saw a toy, I saw the future. Now we live in a time where I can actually
@@ -31,6 +35,7 @@
             entrepreneurs evolve and bring AI into their journey, so they can experience the same
             shift I did: that the world suddenly opens to new possibilities.
           </p>
+
           <div class="links">
             <a href="https://www.linkedin.com/in/alexkamis" target="_blank" rel="noopener">linkedin</a>
             <a href="mailto:alex@kamis.works">email</a>
@@ -39,5 +44,6 @@
       </section>
     </div>
   </main>
+
 </body>
 </html>
