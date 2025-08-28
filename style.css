@@ -130,7 +130,7 @@ p{ margin:0 0 18px 0; }
   left: 0;
   bottom: -2px;        /* nära texten */
   width: 100%;
-  height: 2px;         /* tunn linje */
+  height: 4px;         /* tunn linje */
   background: #999;
   opacity: 0;
   transform: scaleX(0);
