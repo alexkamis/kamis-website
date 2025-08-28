@@ -44,6 +44,73 @@ main {
   text-transform: lowercase;
   Letter-spacing: -0.01em;
 }
+
+/* Bas: gör wordmarken tung och tajt */
+.brand--glitch{
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--fg);
+  font-family: "Inter", sans-serif;
+  font-variation-settings: "wght" 780;
+  font-weight: 800;                 /* fallback */
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* De två färgkopiorna */
+.brand--glitch::before,
+.brand--glitch::after{
+  content: attr(data-text);
+  position: absolute; left: 0; top: 0;
+  pointer-events: none;
+  opacity: .55;
+  filter: blur(.15px);              /* lite CRT-känsla */
+}
+.brand--glitch::before{ color: #00d1ff; transform: translate(0,0); }
+.brand--glitch::after { color: #ff3b3b; transform: translate(0,0); }
+
+/* Glitch-animation på hover (subtil) */
+.brand--glitch:hover::before,
+.brand--glitch:hover::after{
+  animation: glitch-shift 1.6s steps(12, end) infinite;
+  will-change: transform;
+}
+
+/* Vill du alltid animera? Lägg classen .is-animated på länken */
+.brand--glitch.is-animated::before,
+.brand--glitch.is-animated::after{
+  animation: glitch-shift 1.6s steps(12, end) infinite;
+}
+
+/* Nyckelrutor: små ryck i x/y-led */
+@keyframes glitch-shift{
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-1px,  0.5px); }
+  20%  { transform: translate( 1.2px, -0.6px); }
+  30%  { transform: translate(-0.8px, 0); }
+  40%  { transform: translate(0.6px,  0.8px); }
+  50%  { transform: translate(-1.4px, -0.8px); }
+  60%  { transform: translate( 1px,   0.6px); }
+  70%  { transform: translate(-0.6px, -0.4px); }
+  80%  { transform: translate( 0.8px,  0.2px); }
+  90%  { transform: translate(-0.4px,  0.6px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Om användaren valt reducerad rörelse → ingen animation, bara diskret offset */
+@media (prefers-reduced-motion: reduce){
+  .brand--glitch:hover::before,
+  .brand--glitch:hover::after,
+  .brand--glitch.is-animated::before,
+  .brand--glitch.is-animated::after{
+    animation: none;
+  }
+  .brand--glitch::before{ transform: translate(-0.6px, 0); }
+  .brand--glitch::after { transform: translate( 0.6px, 0); }
+}
 .nav a {
   font: 600 15px/1 "Inter", sans-serif;
   text-decoration: none;
