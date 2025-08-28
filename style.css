@@ -192,3 +192,18 @@ p{ margin: 0 0 14px 0; color: var(--fg); }
   text-transform: lowercase;
   color: #555;
 }
+
+.chat-box-mini{
+  margin: 30px auto 0 auto;
+  max-width: 380px;        /* smal som en chat */
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 18px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: lowercase;
+  color: #444;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
